@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>भावेश्वरी दूध संस्था ,गोरंबे </title>
+  <title>भावेश्वरी दूध संस्था ,गोरंबे</title>
 </head>
 <body style="font-family:'Noto Sans Devanagari',sans-serif;max-width:800px;margin:auto;">
   <h2 style="text-align:center;">🐄 भावेश्वरी दूध संस्था ,गोरंबे </h2>
@@ -24,7 +24,8 @@
   </form>
 
   <h3>संकलन रेकॉर्ड:</h3>
-  <table border="1" width="100%">
+  <button onclick="downloadPDF()">📄 PDF डाउनलोड करा</button>
+  <table border="1" width="100%" id="milkTable">
     <thead>
       <tr>
         <th>तारीख</th>
@@ -38,13 +39,14 @@
     <tbody id="dataBody"></tbody>
   </table>
 
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <!-- Firebase SDKs v9 -->
   <script type="module">
-    // Import Firebase SDK
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
-    // 🔹 तुझं firebaseConfig (तू दिलेलं)
     const firebaseConfig = {
       apiKey: "AIzaSyD_4wQmuzFPJjid-Co9Y-6vgEb70jxWTSY",
       authDomain: "dairy-mill-production.firebaseapp.com",
@@ -56,11 +58,9 @@
       measurementId: "G-YQ2BDHS8HG"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // Submit Data
     window.submitMilkData = function () {
       const date = document.getElementById('date').value;
       const name = document.getElementById('name').value;
@@ -69,7 +69,6 @@
       const rate = document.getElementById('rate').value;
       const amount = (parseFloat(liters) * parseFloat(rate)).toFixed(2);
 
-      // push data
       push(ref(db, 'milkCollection'), {
         date: date,
         name: name,
@@ -83,7 +82,6 @@
       });
     }
 
-    // Show Data
     const dataRef = ref(db, 'milkCollection');
     onValue(dataRef, (snapshot) => {
       const data = snapshot.val();
@@ -102,6 +100,27 @@
           </tr>`;
       }
     });
+
+    // PDF Download Function
+    window.downloadPDF = function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text("भावेश्वरी दूध संस्था, गोरंबे - संकलन रेकॉर्ड", 10, 10);
+
+      // टेबलचा HTML घ्या
+      const table = document.getElementById('milkTable');
+      let y = 20;
+      for (let row of table.rows) {
+        let line = '';
+        for (let cell of row.cells) {
+          line += cell.innerText + '   ';
+        }
+        doc.text(line, 10, y);
+        y += 8;
+      }
+
+      doc.save('milk-records.pdf');
+    }
   </script>
 </body>
 </html>
