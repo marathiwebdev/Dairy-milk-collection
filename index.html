@@ -1,189 +1,98 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="mr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>दुग्ध संकलन — Farmer Milk Records</title>
-
-<!-- Simple Google font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg: #f6fbff;
-    --card: #ffffff;
-    --accent: #0b78ff;
-    --muted: #6b7280;
-    --success: #16a34a;
-    --danger: #ef4444;
-    --glass: rgba(255,255,255,0.6);
-    --soft-shadow: 0 8px 24px rgba(12, 23, 55, 0.08);
-    font-family: 'Poppins', system-ui, -apple-system, "Helvetica Neue", Arial;
-  }
-
-  html,body{height:100%;margin:0;background:linear-gradient(180deg,#e7f0ff 0%, #f6fbff 100%); color:#0b1220;}
-  .app {
-    max-width:920px;margin:0 auto;padding:18px;
-  }
-
-  /* header */
-  .header {
-    display:flex;gap:12px;align-items:center;margin-bottom:18px;
-  }
-  .logo {
-    width:62px;height:62px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#31a6ff);
-    display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;box-shadow:var(--soft-shadow);
-  }
-  .title {font-size:18px;font-weight:700;}
-  .subtitle{font-size:12px;color:var(--muted);}
-
-  /* card */
-  .card {
-    background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--soft-shadow);margin-bottom:14px;
-  }
-
-  /* login */
-  .phone-input {display:flex;gap:8px;align-items:center;}
-  input[type="tel"], input[type="text"], input[type="number"] {
-    flex:1;padding:12px;border-radius:10px;border:1px solid #e6eefc;font-size:15px;outline:none;
-    background:linear-gradient(180deg,#fff,#fbfdff);
-  }
-  button.btn {
-    padding:11px 14px;border-radius:10px;border:none;background:var(--accent);color:white;font-weight:600;
-  }
-  button.secondary {background:transparent;border:1px solid #e6eefc;color:var(--accent);font-weight:600;}
-
-  .muted {color:var(--muted);font-size:13px}
-
-  /* records list */
-  .records {display:flex;flex-direction:column;gap:10px;margin-top:6px;}
-  .record {
-    display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border-radius:10px;border:1px solid #f0f6ff;background:linear-gradient(180deg,#fff,#fcfeff);
-  }
-  .record .left {display:flex;flex-direction:column;}
-  .tag {font-size:12px;padding:6px 8px;border-radius:999px;background:#f1f6ff;color:var(--accent);font-weight:600;}
-  .small {font-size:12px;color:var(--muted);}
-
-  .summary {display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px dashed #eef4ff}
-
-  .floating {
-    position:fixed;right:18px;bottom:18px;background:var(--accent);color:white;padding:12px;border-radius:999px;box-shadow:0 10px 30px rgba(11,120,255,0.18);
-    display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px;border:none;
-  }
-
-  /* responsive tweaks */
-  @media (max-width:480px){
-    .header {gap:10px}
-    .logo {width:56px;height:56px;font-size:18px}
-    .title {font-size:16px}
-  }
-
-  .center {text-align:center}
-  .hidden {display:none}
-  .notice {background:#fff7ed;padding:10px;border-radius:10px;border:1px solid #fff0e6;color:#92400e;margin-bottom:10px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dairy Mill — Farmer Login</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 350px;
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: #1f6feb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:disabled {
+      background-color: #ccc;
+    }
+    #authMessage {
+      color: #333;
+      font-size: 14px;
+      margin-top: 10px;
+      min-height: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="app">
-    <div class="header">
-      <div class="logo">दुग्ध</div>
-      <div>
-        <div class="title">दुग्ध संकलन — Milk Records</div>
-        <div class="subtitle">सकाळ/सायंकाळ — Farmers login with OTP</div>
-      </div>
+
+  <div class="container">
+    <h2>Farmer Login</h2>
+    <input type="text" id="phoneNumber" placeholder="Enter Phone e.g. +91 9876543210" />
+    <div id="recaptcha-container"></div>
+    <button id="sendOtpBtn">Send OTP</button>
+
+    <div id="otpArea" class="hidden">
+      <input type="text" id="otpInput" placeholder="Enter OTP" />
+      <button id="verifyOtpBtn">Verify OTP</button>
     </div>
 
-    <!-- AUTH CARD -->
-    <div id="authCard" class="card">
-      <div class="muted">1) Enter your mobile number (use country code +91 for India)</div>
-      <div style="height:10px;"></div>
-      <div class="phone-input">
-        <input id="phoneNumber" type="tel" placeholder="+91 98765 43210" />
-        <button id="sendOtpBtn" class="btn">Send OTP</button>
-      </div>
-
-      <div id="otpArea" class="hidden" style="margin-top:12px;">
-        <div class="muted">2) Enter OTP you received</div>
-        <div style="height:8px;"></div>
-        <div style="display:flex;gap:8px;">
-          <input id="otpInput" type="text" inputmode="numeric" placeholder="6-digit code" maxlength="6" />
-          <button id="verifyOtpBtn" class="btn">Verify</button>
-        </div>
-      </div>
-
-      <div id="authMessage" style="margin-top:12px;" class="muted"></div>
-      <!-- reCAPTCHA container (invisible) -->
-      <div id="recaptcha-container"></div>
-    </div>
-
-    <!-- MAIN APP -->
-    <div id="mainCard" class="card hidden">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div>
-          <div style="font-weight:700;font-size:16px;" id="farmerName">नवीन शेतकरी</div>
-          <div class="small" id="farmerPhone">--</div>
-        </div>
-        <div style="display:flex;gap:8px;">
-          <button id="logoutBtn" class="secondary">Logout</button>
-        </div>
-      </div>
-
-      <div style="height:12px"></div>
-
-      <div id="notice" class="notice hidden small"></div>
-
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-        <div class="tag" id="balanceTag">₹0</div>
-        <div class="small">Total value (based on rates)</div>
-      </div>
-
-      <div style="display:flex;gap:8px;margin-bottom:6px;">
-        <button id="refreshBtn" class="btn">Refresh Records</button>
-        <button id="addSampleBtn" class="secondary">+ Add Sample</button>
-      </div>
-
-      <div id="recordsList" class="records"></div>
-
-      <div class="summary">
-        <div class="small">Total Morning: <strong id="totalMorning">0 L</strong></div>
-        <div class="small">Total Night: <strong id="totalNight">0 L</strong></div>
-        <div class="small">Total Earnings: <strong id="totalEarnings">₹0</strong></div>
-      </div>
-    </div>
-
-    <div style="height:80px;"></div>
-    <button id="helpFloating" class="floating">Need Help?</button>
+    <div id="authMessage"></div>
   </div>
 
-  <!-- Firebase SDKs (modular) -->
   <script type="module">
-    // ====== IMPORTANT: Paste your Firebase config object below (replace the placeholder) ======
-    // Use the config exactly from your Firebase console (project settings).
-  const firebaseConfig = {
-  apiKey: "AIzaSyD_4wQmuzFPJjid-Co9Y-6vgEb70jxWTSY",
-  authDomain: "dairy-mill-production.firebaseapp.com",
-  databaseURL: "https://dairy-mill-production-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "dairy-mill-production",
-  storageBucket: "dairy-mill-production.firebasestorage.app",
-  messagingSenderId: "721651192386",
-  appId: "1:721651192386:web:b5613cedce06deed1e13db",
-  measurementId: "G-YQ2BDHS8HG"
-};
+    // ✅ Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyD_4wQmuzFPJjid-Co9Y-6vgEb70jxWTSY",
+      authDomain: "dairy-mill-production.firebaseapp.com",
+      databaseURL: "https://dairy-mill-production-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "dairy-mill-production",
+      storageBucket: "dairy-mill-production.appspot.com",
+      messagingSenderId: "721651192386",
+      appId: "1:721651192386:web:b5613cedce06deed1e13db",
+      measurementId: "G-YQ2BDHS8HG"
     };
-    // =======================================================================================
 
-    // If you haven't pasted config, show an alert
-    if (!firebaseConfig || firebaseConfig.apiKey === "PASTE_API_KEY") {
-      document.getElementById('authMessage').innerText =
-        '⚠️ Please paste your Firebase config in the top of the script (apiKey etc.).';
-    }
-
-    // Import Firebase modular SDK from CDN
+    // ✅ Firebase Imports (latest CDN)
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getAuth, signInWithPhoneNumber, RecaptchaVerifier, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-    import { getDatabase, ref, get, set, push, onValue, child } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+    import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
-    // Initialize
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getDatabase(app);
@@ -195,71 +104,47 @@
     const otpInput = document.getElementById('otpInput');
     const verifyOtpBtn = document.getElementById('verifyOtpBtn');
     const authMessage = document.getElementById('authMessage');
-    const authCard = document.getElementById('authCard');
-    const mainCard = document.getElementById('mainCard');
-    const farmerNameEl = document.getElementById('farmerName');
-    const farmerPhoneEl = document.getElementById('farmerPhone');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const recordsList = document.getElementById('recordsList');
-    const balanceTag = document.getElementById('balanceTag');
-    const totalMorningEl = document.getElementById('totalMorning');
-    const totalNightEl = document.getElementById('totalNight');
-    const totalEarningsEl = document.getElementById('totalEarnings');
-    const refreshBtn = document.getElementById('refreshBtn');
-    const addSampleBtn = document.getElementById('addSampleBtn');
-    const notice = document.getElementById('notice');
-    const helpFloating = document.getElementById('helpFloating');
 
-    // Setup invisible reCAPTCHA
+    // ✅ Setup Recaptcha
     let recaptchaVerifier;
     function setupRecaptcha() {
-      // Make sure the container is empty first
       if (window.recaptchaWidgetRendered) return;
       recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
-        'size': 'invisible', // invisible recaptcha
-        'callback': (response) => {
-          // reCAPTCHA solved, will proceed with signInWithPhoneNumber
-        }
+        'size': 'invisible'
       }, auth);
       window.recaptchaWidgetRendered = true;
     }
     setupRecaptcha();
 
-    // Format phone: basic trim. Expect user to supply +91...
-    function normalizePhone(p){
-      if(!p) return '';
-      p = p.replace(/\s+/g,'');
-      if(p.startsWith('0')) p = '+91' + p.slice(1);
-      if(!p.startsWith('+')) {
-        // if user entered 10-digit number, assume +91
-        if(/^[6-9]\d{9}$/.test(p)) p = '+91' + p;
-      }
+    // ✅ Normalize phone
+    function normalizePhone(p) {
+      if (!p) return '';
+      p = p.replace(/\s+/g, '');
+      if (p.startsWith('0')) p = '+91' + p.slice(1);
+      if (!p.startsWith('+') && /^[6-9]\d{9}$/.test(p)) p = '+91' + p;
       return p;
     }
 
-    // Send OTP
-    sendOtpBtn.addEventListener('click', async ()=>{
+    // ✅ Send OTP
+    sendOtpBtn.addEventListener('click', async () => {
       authMessage.innerText = '';
-      const raw = phoneInput.value || '';
-      const phoneNumber = normalizePhone(raw);
-      if(!/^\+\d{10,15}$/.test(phoneNumber)){
-        authMessage.innerText = 'Enter valid phone number with country code, e.g. +91 9876543210';
+      const phoneNumber = normalizePhone(phoneInput.value);
+      if (!/^\+\d{10,15}$/.test(phoneNumber)) {
+        authMessage.innerText = 'Enter valid number, e.g. +91 9876543210';
         return;
       }
+
       try {
         setupRecaptcha();
         sendOtpBtn.disabled = true;
         authMessage.innerText = 'Sending OTP...';
         const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
-        // Save to window for verify step
         window.confirmationResult = confirmationResult;
         otpArea.classList.remove('hidden');
-        authMessage.innerText = 'OTP sent. Enter 6-digit code.';
-      } catch(err){
+        authMessage.innerText = 'OTP sent successfully ✅';
+      } catch (err) {
         console.error(err);
-        authMessage.innerText = 'Failed to send OTP: ' + (err.message || err);
-        sendOtpBtn.disabled = false;
-        // reset reCAPTCHA so user can retry
+        authMessage.innerText = 'Error: ' + (err.message || err);
         if (recaptchaVerifier) recaptchaVerifier.clear();
         window.recaptchaWidgetRendered = false;
         setupRecaptcha();
@@ -268,232 +153,25 @@
       }
     });
 
-    // Verify OTP
-    verifyOtpBtn.addEventListener('click', async ()=>{
-      authMessage.innerText = '';
-      const code = (otpInput.value || '').trim();
-      if(code.length < 4){ authMessage.innerText = 'Enter the OTP'; return; }
+    // ✅ Verify OTP
+    verifyOtpBtn.addEventListener('click', async () => {
+      const code = otpInput.value.trim();
+      if (code.length < 4) {
+        authMessage.innerText = 'Enter OTP';
+        return;
+      }
+
       try {
         verifyOtpBtn.disabled = true;
         authMessage.innerText = 'Verifying...';
         const result = await window.confirmationResult.confirm(code);
-        const user = result.user;
-        onUserSignedIn(user);
-      } catch(err){
-        console.error(err);
-        authMessage.innerText = 'OTP verification failed: ' + (err.message || err);
+        authMessage.innerText = 'Login successful 🎉';
+      } catch (err) {
+        authMessage.innerText = 'Invalid OTP: ' + err.message;
       } finally {
         verifyOtpBtn.disabled = false;
       }
     });
-
-    // When signed in
-    function onUserSignedIn(user){
-      // user.phoneNumber includes +91...
-      const phone = user.phoneNumber || '';
-      // hide auth, show main
-      authCard.classList.add('hidden');
-      mainCard.classList.remove('hidden');
-      farmerNameEl.innerText = 'शेतकरी'; // placeholder; you can update name if DB has it
-      farmerPhoneEl.innerText = phone;
-      authMessage.innerText = '';
-      // load records
-      loadRecordsForPhone(phone);
-    }
-
-    // Logout
-    logoutBtn.addEventListener('click', async ()=>{
-      await signOut(auth);
-      mainCard.classList.add('hidden');
-      authCard.classList.remove('hidden');
-      otpArea.classList.add('hidden');
-      phoneInput.value = '';
-      otpInput.value = '';
-      recordsList.innerHTML = '';
-      balanceTag.innerText = '₹0';
-      totalMorningEl.innerText = '0 L';
-      totalNightEl.innerText = '0 L';
-      totalEarningsEl.innerText = '₹0';
-      notice.classList.add('hidden');
-    });
-
-    // Refresh
-    refreshBtn.addEventListener('click', ()=>{
-      const phone = auth.currentUser?.phoneNumber;
-      if(phone) loadRecordsForPhone(phone, true);
-    });
-
-    // Add sample record (for testing)
-    addSampleBtn.addEventListener('click', async ()=>{
-      const phone = auth.currentUser?.phoneNumber;
-      if(!phone) return alert('Login first');
-      // sample record: date, session (morning/night), liters, ratePerLitre, note
-      const sample = {
-        date: new Date().toISOString().split('T')[0],
-        timestamp: Date.now(),
-        session: (Math.random()>0.5) ? 'morning' : 'night',
-        liters: Number((Math.random()*6+1).toFixed(2)),
-        rate: [28,30,32,35][Math.floor(Math.random()*4)],
-        note: 'sample'
-      };
-      // push into DB under /milk_records/<phone>/
-      try {
-        const newRef = push(ref(db, 'milk_records/' + encodePhoneKey(phone)));
-        await set(newRef, sample);
-        alert('Sample record added');
-      } catch(err){
-        console.error(err);
-        alert('Failed to add sample: ' + err.message);
-      }
-    });
-
-    helpFloating.addEventListener('click', ()=>{
-      alert('Need help? Make sure:\n1) You pasted Firebase config at top\n2) Phone Auth is enabled in Firebase console\n3) Database rules allow authenticated users to read their records.\nIf you want, paste your DB structure and I can tailor rules.');
-    });
-
-    // Utility: encode phone key for DB path (replace + with _ to be safe)
-    function encodePhoneKey(phone){
-      // phone like +919876543210 -> _919876543210
-      return phone.replace(/\+/g,'plus').replace(/\./g,'_');
-    }
-
-    // Load records for phone (once)
-    async function loadRecordsForPhone(phone, forceReload=false){
-      recordsList.innerHTML = '';
-      notice.classList.add('hidden');
-      if(!phone) return;
-      const key = encodePhoneKey(phone);
-      const userRef = ref(db, 'milk_records/' + key);
-      try {
-        // listen once snapshot
-        const snapshot = await get(userRef);
-        if(!snapshot.exists()){
-          notice.innerText = 'कोणतेही रेकॉर्ड आढळले नाहीत. कृपया रेकॉर्ड जोडण्यासाठी "Add Sample" बटण वापरा.';
-          notice.classList.remove('hidden');
-          balanceTag.innerText = '₹0';
-          totalMorningEl.innerText = '0 L';
-          totalNightEl.innerText = '0 L';
-          totalEarningsEl.innerText = '₹0';
-          return;
-        }
-        const data = snapshot.val();
-        // data is map of pushed keys -> record
-        const entries = Object.entries(data).map(([id, rec]) => Object.assign({}, rec, {id}));
-        // sort descending by timestamp
-        entries.sort((a,b)=>b.timestamp - a.timestamp);
-        renderRecords(entries);
-      } catch(err){
-        console.error(err);
-        notice.innerText = 'डेटा लोड करण्यात अडचण: ' + (err.message || err);
-        notice.classList.remove('hidden');
-      }
-    }
-
-    function renderRecords(entries){
-      recordsList.innerHTML = '';
-      let totalMorning = 0, totalNight = 0, totalEarnings = 0;
-      for(const rec of entries){
-        // rec: {date, timestamp, session, liters, rate, note}
-        const li = document.createElement('div');
-        li.className = 'record';
-        const left = document.createElement('div');
-        left.className = 'left';
-        const date = document.createElement('div');
-        date.style.fontWeight = '700';
-        date.innerText = rec.date || new Date(rec.timestamp).toLocaleDateString();
-        const small = document.createElement('div');
-        small.className = 'small';
-        small.innerText = `${rec.session?.toUpperCase() || '—'} • ${rec.liters || 0} L • Rate ₹${rec.rate || 0}/L`;
-        left.appendChild(date);
-        left.appendChild(small);
-
-        const right = document.createElement('div');
-        right.style.textAlign = 'right';
-        const amt = Number((rec.liters || 0) * (rec.rate || 0));
-        const amtEl = document.createElement('div');
-        amtEl.style.fontWeight = '700';
-        amtEl.innerText = `₹${amt.toFixed(2)}`;
-        const note = document.createElement('div');
-        note.className = 'small';
-        note.innerText = rec.note || '';
-
-        right.appendChild(amtEl);
-        right.appendChild(note);
-
-        li.appendChild(left);
-        li.appendChild(right);
-        recordsList.appendChild(li);
-
-        // summary totals
-        if((rec.session||'').toLowerCase() === 'morning') totalMorning += (Number(rec.liters) || 0);
-        else totalNight += (Number(rec.liters) || 0);
-        totalEarnings += amt;
-      }
-
-      // update summary UI
-      balanceTag.innerText = `₹${totalEarnings.toFixed(2)}`;
-      totalMorningEl.innerText = `${totalMorning.toFixed(2)} L`;
-      totalNightEl.innerText = `${totalNight.toFixed(2)} L`;
-      totalEarningsEl.innerText = `₹${totalEarnings.toFixed(2)}`;
-    }
-
-    // If already signed-in (page reload), restore
-    auth.onAuthStateChanged(async (user)=>{
-      if(user){
-        onUserSignedIn(user);
-      } else {
-        // show auth card
-        mainCard.classList.add('hidden');
-        authCard.classList.remove('hidden');
-      }
-    });
-
-    // -------- Sample DB structure (Realtime Database) ----------
-    // Recommended path: /milk_records/<encodedPhone>/{autoId} => { date, timestamp, session, liters, rate, note }
-    //
-    // Example (JSON):
-    // {
-    //   "milk_records": {
-    //     "plus919876543210": {
-    //       "-Nabc123": {
-    //         "date": "2025-10-02",
-    //         "timestamp": 1696233600000,
-    //         "session": "morning",
-    //         "liters": 5.2,
-    //         "rate": 32,
-    //         "note": "happy cow"
-    //       },
-    //       "-Nabc124": {
-    //         "date": "2025-10-02",
-    //         "timestamp": 1696268400000,
-    //         "session": "night",
-    //         "liters": 3.5,
-    //         "rate": 30,
-    //         "note": ""
-    //       }
-    //     }
-    //   }
-    // }
-    //
-    // ---------- Sample Realtime DB Rules (basic, only allow auth reads/writes to their own node) ----------
-    // Copy to Firebase console -> Database -> Rules (Realtime Database)
-    //
-    // {
-    //   "rules": {
-    //     "milk_records": {
-    //       "$phoneKey": {
-    //         ".read": "auth != null && $phoneKey === auth.token.phone_number.replace('+','plus')",
-    //         ".write": "auth != null && $phoneKey === auth.token.phone_number.replace('+','plus')"
-    //       }
-    //     }
-    //   }
-    // }
-    //
-    // NOTE: Firebase auth token includes phone_number only if the phone provider sets it. If rules fail for you,
-    // you can use a less strict rule for testing (not for production):
-    // ".read": "auth != null", ".write": "auth != null"
-    //
-    // ---------- If you prefer Firestore, let me know and I will adapt the code. ----------
   </script>
 </body>
 </html>
